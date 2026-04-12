@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>Lap Timer</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏱️</text></svg>">
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+  <div id="app">
+    <!-- Pre-race setup -->
+    <div id="setup-screen" class="screen active">
+      <h1 class="app-title">⏱️ Lap Timer</h1>
+
+      <div class="lap-selector">
+        <label>Number of Laps</label>
+        <div class="roller-wrapper">
+          <div class="roller-scroll" id="lap-roller"></div>
+          <div class="roller-fade roller-fade-top"></div>
+          <div class="roller-fade roller-fade-bottom"></div>
+          <div class="roller-selector"></div>
+        </div>
+        <p class="hint">0 = unlimited laps</p>
+      </div>
+
+      <button id="start-btn" class="btn-start">START</button>
+    </div>
+
+    <!-- Timer running -->
+    <div id="timer-screen" class="screen">
+      <div class="clock-label">Total time</div>
+      <div class="timer-display" id="timer-display">00:00.00</div>
+      <div class="clock-label" id="lap-label">Lap time</div>
+      <div class="lap-current" id="lap-display">0.00 s</div>
+
+      <div class="laps-to-go" id="laps-to-go"></div>
+
+      <div class="controls">
+        <button id="lap-btn" class="btn-action btn-lap">
+          <span class="btn-icon">⏱</span>
+          <span class="btn-label">Lap</span>
+        </button>
+        <button id="stop-btn" class="btn-action btn-stop">
+          <span class="btn-icon">⏹</span>
+          <span class="btn-label">Stop</span>
+        </button>
+      </div>
+
+      <div class="lap-list" id="lap-list"></div>
+    </div>
+
+    <!-- Results -->
+    <div id="results-screen" class="screen">
+      <h2 class="results-title">Results</h2>
+      <div class="timer-display final-time" id="final-time"></div>
+      <div class="results-list" id="results-list"></div>
+
+      <div class="results-actions">
+        <button id="share-btn" class="btn-share">
+          <span class="btn-icon">📤</span>
+          <span class="btn-label">Share</span>
+        </button>
+        <button id="reset-btn" class="btn-reset">
+          <span class="btn-icon">↺</span>
+          <span class="btn-label">Reset</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=5"></script>
+</body>
+</html>
