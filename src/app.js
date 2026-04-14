@@ -87,6 +87,21 @@
     }, 80);
   });
 
+  // --- Button state helpers ---
+  function updateFinalLapUI() {
+    stopBtn.classList.add('end-of-race');
+    stopBtn.querySelector('.btn-icon').textContent = '🏁';
+    stopBtn.querySelector('.btn-label').textContent = 'End of Race';
+    lapBtn.classList.add('last-lap');
+  }
+
+  function resetButtonUI() {
+    stopBtn.classList.remove('end-of-race');
+    stopBtn.querySelector('.btn-icon').textContent = '⏹';
+    stopBtn.querySelector('.btn-label').textContent = 'Stop';
+    lapBtn.classList.remove('last-lap');
+  }
+
   // --- Wake Lock ---
   function requestWakeLock() {
     try {
@@ -123,6 +138,7 @@
     timerDisplay.textContent = '00:00.00';
     lapDisplayEl.textContent = '0.00 s';
     lapLabelEl.textContent = 'Lap time';
+    resetButtonUI();
     showScreen(timerScreen);
     rafId = requestAnimationFrame(tick);
     requestWakeLock();
@@ -147,10 +163,13 @@
 
     if (totalLaps > 0) {
       var remaining = totalLaps - lapNum;
-      if (remaining > 0) {
-        lapsToGoEl.textContent = remaining + ' lap' + (remaining !== 1 ? 's' : '') + ' to go';
+      if (remaining > 1) {
+        lapsToGoEl.textContent = remaining + ' laps to go';
+      } else if (remaining === 1) {
+        lapsToGoEl.textContent = '⚑ Final lap!';
+        updateFinalLapUI();
       } else {
-        lapsToGoEl.textContent = 'Final lap completed!';
+        lapsToGoEl.textContent = 'Race complete — press Stop';
       }
     }
   });
@@ -273,8 +292,10 @@
     lapsToGoEl.textContent = '';
     timerDisplay.textContent = '00:00.00';
     lapDisplayEl.textContent = '0.00 s';
+    lapLabelEl.textContent = 'Lap time';
     finalTimeEl.textContent = '';
     shareBtn.querySelector('.btn-label').textContent = 'Share';
+    resetButtonUI();
     showScreen(setupScreen);
   });
 })();

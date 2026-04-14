@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#1a1a2e"/>
+  <!-- crown button -->
+  <rect x="220" y="90" width="72" height="32" rx="16" fill="#2ecc71"/>
+  <rect x="248" y="116" width="16" height="36" fill="#2ecc71"/>
+  <!-- body -->
+  <circle cx="256" cy="296" r="168" fill="none" stroke="#2ecc71" stroke-width="30"/>
+  <!-- minute hand -->
+  <line x1="256" y1="296" x2="256" y2="176" stroke="#f1c40f" stroke-width="22" stroke-linecap="round"/>
+  <!-- second hand -->
+  <line x1="256" y1="296" x2="330" y2="254" stroke="#eeeeee" stroke-width="14" stroke-linecap="round"/>
+  <!-- center -->
+  <circle cx="256" cy="296" r="14" fill="#ffffff"/>
+</svg>
