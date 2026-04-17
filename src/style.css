@@ -58,23 +58,82 @@ body {
 /* Setup screen */
 .app-title {
   font-size: 2rem;
-  margin-top: 8vh;
-  margin-bottom: 2rem;
+  margin-top: 4vh;
+  margin-bottom: 1.25rem;
   text-align: center;
 }
 
-.lap-selector {
+.setup-section {
+  width: 100%;
+  margin-bottom: 1.25rem;
   text-align: center;
-  margin-bottom: 2rem;
 }
 
-.lap-selector label {
+.setup-label {
   display: block;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.setup-input {
+  width: 100%;
+  max-width: 340px;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.65rem 1rem;
+  text-align: center;
+  outline: none;
+  font-family: inherit;
+}
+
+.setup-input:focus {
+  border-color: var(--text-muted);
+}
+
+.relay-legs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Race type grid */
+.race-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.race-type-btn {
+  padding: 0.6rem 0.25rem;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.race-type-btn.selected {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(46,204,113,0.08);
+}
+
+.race-type-btn:active {
+  background: rgba(255,255,255,0.08);
 }
 
 /* Drum roller */
@@ -158,22 +217,34 @@ body {
 }
 
 .btn-start {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   border: 4px solid var(--green);
   background: transparent;
   color: var(--green);
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.15s;
+  margin: 0.5rem auto 1.5rem;
+  flex-shrink: 0;
 }
 
 .btn-start:active {
   background: var(--green);
   color: var(--bg);
+}
+
+.race-name-display {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding-top: 0.5rem;
+  min-height: 1.4em;
 }
 
 /* Timer screen */
@@ -348,6 +419,65 @@ body {
   opacity: 0.7;
 }
 
+/* Relay leg headers in lap list */
+.relay-leg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.relay-leg-current {
+  background: rgba(241,196,15,0.12);
+  color: var(--yellow);
+  border: 1px solid rgba(241,196,15,0.3);
+}
+
+.relay-leg-done {
+  background: rgba(255,255,255,0.04);
+  color: var(--text-muted);
+}
+
+.relay-leg-name {
+  font-weight: 700;
+}
+
+.relay-leg-total {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.relay-lap {
+  padding-left: 1.5rem;
+}
+
+/* Results screen relay */
+.result-leg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.75rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.result-leg-name {
+  color: var(--green);
+  font-size: 1rem;
+}
+
+.result-leg-total {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--green);
+}
+
 /* Results screen */
 .results-title {
   padding-top: 1.5rem;
@@ -464,8 +594,8 @@ button {
     font-size: 1.6rem;
   }
   .btn-start {
-    width: 170px;
-    height: 170px;
-    font-size: 1.7rem;
+    width: 140px;
+    height: 140px;
+    font-size: 1.5rem;
   }
 }

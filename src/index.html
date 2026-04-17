@@ -17,8 +17,22 @@
     <div id="setup-screen" class="screen active">
       <h1 class="app-title">⏱️ Lap Timer</h1>
 
-      <div class="lap-selector">
-        <label>Number of Laps</label>
+      <!-- Race type selector -->
+      <div class="setup-section">
+        <label class="setup-label">Race Type</label>
+        <div class="race-type-grid" id="race-type-grid">
+          <button class="race-type-btn" data-race="custom">Custom</button>
+          <button class="race-type-btn" data-race="800">800m</button>
+          <button class="race-type-btn" data-race="1600">1600m</button>
+          <button class="race-type-btn" data-race="3200">3200m</button>
+          <button class="race-type-btn" data-race="4x400">4×400 Relay</button>
+          <button class="race-type-btn" data-race="4x800">4×800 Relay</button>
+        </div>
+      </div>
+
+      <!-- Custom lap roller (shown for "custom" only) -->
+      <div class="setup-section" id="custom-lap-section">
+        <label class="setup-label">Number of Laps</label>
         <div class="roller-wrapper">
           <div class="roller-scroll" id="lap-roller"></div>
           <div class="roller-fade roller-fade-top"></div>
@@ -28,11 +42,29 @@
         <p class="hint">0 = unlimited laps</p>
       </div>
 
+      <!-- Race name -->
+      <div class="setup-section">
+        <label class="setup-label" for="race-name-input">Race Name</label>
+        <input type="text" id="race-name-input" class="setup-input" placeholder="Race" maxlength="40">
+      </div>
+
+      <!-- Relay leg names (shown for relays only) -->
+      <div class="setup-section" id="relay-legs-section" style="display:none">
+        <label class="setup-label">Leg Names</label>
+        <div class="relay-legs">
+          <input type="text" id="leg1-input" class="setup-input" placeholder="Leg 1" maxlength="30">
+          <input type="text" id="leg2-input" class="setup-input" placeholder="Leg 2" maxlength="30">
+          <input type="text" id="leg3-input" class="setup-input" placeholder="Leg 3" maxlength="30">
+          <input type="text" id="leg4-input" class="setup-input" placeholder="Leg 4" maxlength="30">
+        </div>
+      </div>
+
       <button id="start-btn" class="btn-start">START</button>
     </div>
 
     <!-- Timer running -->
     <div id="timer-screen" class="screen">
+      <div class="race-name-display" id="timer-race-name"></div>
       <div class="clock-label">Total time</div>
       <div class="timer-display" id="timer-display">00:00.00</div>
       <div class="clock-label" id="lap-label">Lap time</div>
@@ -56,7 +88,7 @@
 
     <!-- Results -->
     <div id="results-screen" class="screen">
-      <h2 class="results-title">Results</h2>
+      <h2 class="results-title" id="results-title">Results</h2>
       <div class="timer-display final-time" id="final-time"></div>
       <div class="results-list" id="results-list"></div>
 
