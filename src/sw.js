@@ -1,4 +1,4 @@
-var CACHE = 'laptimer-v2';
+var CACHE = 'laptimer-v3';
 var ASSETS = [
   '/',
   '/index.html',

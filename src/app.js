@@ -216,7 +216,7 @@
     lapStartTime = startTime;
     timerDisplay.textContent = '00:00.00';
     lapDisplayEl.textContent = '0.00 s';
-    lapLabelEl.textContent = 'Lap time';
+    lapLabelEl.textContent = isRelay ? getLegName(0) + ' — Lap 1' : 'Lap 1 time';
     timerRaceName.textContent = raceName;
     resetButtonUI();
     showScreen(timerScreen);
@@ -239,8 +239,8 @@
     laps.push({ lapNum: lapNum, splitMs: splitMs, totalMs: totalMs });
 
     if (isRelay) {
-      var legIdx = getLegForLap(lapNum);
-      lapLabelEl.textContent = getLegName(legIdx) + ' — Lap ' + lapNum;
+      var nextLegIdx = getLegForLap(lapNum + 1);
+      lapLabelEl.textContent = getLegName(nextLegIdx) + ' — Lap ' + (lapNum + 1);
     } else {
       lapLabelEl.textContent = 'Lap ' + (lapNum + 1) + ' time';
     }
