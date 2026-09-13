@@ -1,0 +1,10 @@
+# Standalone run of the published image (local testing / non-infra use).
+# The real deployment is owned by homelab-infra.
+
+services:
+  laptimer:
+    image: ghcr.io/alanjwade/laptimer:latest
+    container_name: laptimer
+    restart: unless-stopped
+    ports:
+      - "8080:80"
